@@ -17,7 +17,7 @@ jobs:
     - name: docker login
       run: docker login -u ${{ secrets.USER }} -p ${{ secrets.PASSW }}
     - name: docker push 
-      run: docker image push --tag harwincu/harfullstack:v3
+      run: docker image push harwincu/harfullstack:v3
     - name: Azure login
       uses: azure/login@v2
       with:
