@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harfullstack
+  namespace: production
+  labels:
+    app: harfullstack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: harfullstack
+  template:
+    metadata:
+      labels:
+        app: harfullstack
+    spec:
+      containers:
+      - name: harfullstack
+        image: harwincu/harfullstack:v1
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: password
